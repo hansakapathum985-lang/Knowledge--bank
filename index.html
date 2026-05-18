@@ -1,0 +1,564 @@
+Put your HTML text here<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OMA Knowledge Bank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #050816, #0f172a, #111827);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.15);
+      filter: blur(120px);
+      z-index: -1;
+      animation: float 8s infinite alternate ease-in-out;
+    }
+
+    .bg1 {
+      top: -100px;
+      left: -100px;
+    }
+
+    .bg2 {
+      bottom: -100px;
+      right: -100px;
+      background: rgba(140, 0, 255, 0.15);
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0px);
+      }
+      to {
+        transform: translateY(40px);
+      }
+    }
+
+    header {
+      padding: 25px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 700;
+      background: linear-gradient(to right, #00f2fe, #8f00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00f2fe;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 50px 8%;
+      flex-direction: column;
+    }
+
+    .hero h1 {
+      font-size: 70px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #00f2fe, #8f00ff, #ff00c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 800px;
+      font-size: 18px;
+      color: #d1d5db;
+      margin-bottom: 30px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: 0.3s;
+      text-decoration: none;
+      color: white;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #00f2fe, #8f00ff);
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+    }
+
+    .secondary-btn {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.03);
+    }
+
+    section {
+      padding: 100px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 45px;
+      margin-bottom: 50px;
+      background: linear-gradient(to right, #00f2fe, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      border-radius: 25px;
+      padding: 30px;
+      transition: 0.4s;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
+    }
+
+    .glass-card img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .glass-card h3 {
+      margin-bottom: 15px;
+      color: #00f2fe;
+    }
+
+    .upload-box {
+      background: rgba(255,255,255,0.05);
+      padding: 40px;
+      border-radius: 25px;
+      text-align: center;
+      border: 2px dashed rgba(255,255,255,0.2);
+    }
+
+    .upload-box input {
+      margin-top: 20px;
+      padding: 15px;
+      width: 100%;
+      border-radius: 12px;
+      border: none;
+      background: rgba(255,255,255,0.08);
+      color: white;
+    }
+
+    .paper-list {
+      margin-top: 30px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .paper-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .download-btn {
+      padding: 10px 20px;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(135deg, #00f2fe, #8f00ff);
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .ai-box {
+      background: rgba(255,255,255,0.05);
+      border-radius: 25px;
+      padding: 40px;
+      margin-top: 40px;
+    }
+
+    .ai-box textarea {
+      width: 100%;
+      min-height: 140px;
+      border-radius: 18px;
+      padding: 20px;
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: white;
+      font-size: 16px;
+      resize: none;
+      margin-top: 20px;
+    }
+
+    .answer-box {
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 20px;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      line-height: 1.8;
+      color: #d1fae5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #94a3b8;
+    }
+
+    @media(max-width:768px) {
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style></head>
+<body>  <div class="bg-glow bg1"></div>
+  <div class="bg-glow bg2"></div>  <header>
+    <div class="logo">OMA Knowledge Bank</div><button id="themeToggle" class="btn secondary-btn" style="padding:10px 20px;margin-right:20px;">
+  Dark / Light
+</button>
+
+<nav>
+  <a href="#subjects">Subjects</a>
+  <a href="#papers">Past Papers</a>
+  <a href="#ai">AI Commerce Bot</a>
+</nav>
+
+  </header>  <section style="padding:40px 8%;"><div class="glass-card" style="max-width:700px;margin:auto;">
+  <h2 style="margin-bottom:20px;color:#00f2fe;">Student Login / Register</h2>
+
+  <input type="text" placeholder="Enter Username" style="width:100%;padding:15px;border:none;border-radius:15px;background:rgba(255,255,255,0.08);color:white;margin-bottom:15px;">
+
+  <input type="password" placeholder="Enter Password" style="width:100%;padding:15px;border:none;border-radius:15px;background:rgba(255,255,255,0.08);color:white;margin-bottom:20px;">
+
+  <div class="btn-group">
+    <button class="btn primary-btn">Login</button>
+    <button class="btn secondary-btn">Register</button>
+  </div>
+</div>
+
+  </section>  <section class="hero">
+    <h1>Commerce Students Digital Learning Platform</h1><p>
+  Upload A/L Commerce past papers, download learning resources,
+  and get intelligent AI answers based on the A/L syllabus.<br><br>
+  A/L Commerce past papers upload කරන්න, download කරන්න,
+  සහ syllabus එකට අදාළ AI answers ලබාගන්න පුළුවන් modern learning platform එකක්.
+</p>
+
+<div class="btn-group">
+  <a href="#papers" class="btn primary-btn">Explore Past Papers / Past Papers බලන්න</a>
+  <a href="#ai" class="btn secondary-btn">Ask AI Bot / AI Bot අහන්න</a>
+</div>
+
+  </section>  <section id="subjects">
+    <h2 class="section-title">Commerce Subjects / වාණිජ විෂයන්</h2><div class="card-grid">
+
+  <div class="glass-card">
+    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop" alt="Accounting">
+    <h3>Accounting</h3>
+    <p>
+      Notes, model papers, structured answers, and accounting calculations.
+    </p>
+  </div>
+
+  <div class="glass-card">
+    <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="Business Studies">
+    <h3>Business Studies</h3>
+    <p>
+      Business theories, management concepts, entrepreneurship, and case studies.
+    </p>
+  </div>
+
+  <div class="glass-card">
+    <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1200&auto=format&fit=crop" alt="Economics">
+    <h3>Economics</h3>
+    <p>
+      Macro economics, micro economics, graphs, and commerce analysis.
+    </p>
+  </div>
+
+</div>
+
+  </section>  <section id="papers">
+    <h2 class="section-title">Upload & Download Past Papers / Past Papers</h2><div class="upload-box">
+  <h2>Host Panel - Upload Commerce Past Papers</h2>
+  <p style="margin-top:15px;color:#cbd5e1;">
+    Only the website host/admin can upload papers.
+    Other students can only download papers.<br><br>
+    Website owner ට විතරක් papers upload කරන්න පුළුවන්.
+    අනිත් students ලට download කරන්න විතරයි පුළුවන්.
+  </p>
+
+  <input type="password" id="adminPassword" placeholder="Enter Host Password / Host Password එක දාන්න">
+  <input type="file" id="paperUpload" disabled>
+</div>
+
+<div class="paper-list" id="paperList">
+  <div class="paper-item">
+    <div>
+      <h3>2025 Accounting Model Paper</h3>
+      <p>PDF Document</p>
+    </div>
+
+    <button class="download-btn">Download</button>
+  </div>
+
+  <div class="paper-item">
+    <div>
+      <h3>Business Studies Past Paper</h3>
+      <p>PDF Document</p>
+    </div>
+
+    <button class="download-btn">Download</button>
+  </div>
+</div>
+
+  </section>  <section id="ai">
+    <h2 class="section-title">OMA AI Commerce Bot / AI උදව්කරු</h2><div class="ai-box">
+  <h3>Ask Questions Based on A/L Commerce Syllabus / Commerce ප්‍රශ්න අහන්න</h3>
+
+  <textarea id="questionInput" placeholder="Example: Explain double entry concept in accounting / Accounting double entry concept එක explain කරන්න"></textarea>
+
+  <button class="btn primary-btn" onclick="generateAnswer()" style="margin-top:25px;">
+    Generate AI Answer
+  </button>
+
+  <div class="answer-box" id="answerBox">
+    AI Answer will appear here...
+  </div>
+</div>
+
+  </section>  <section style="padding:100px 8%;"><h2 class="section-title">Future Premium Features</h2>
+
+<div class="card-grid">
+
+  <div class="glass-card">
+    <h3>Firebase Database</h3>
+    <p>
+      Store uploaded papers, users, and AI questions online using Firebase.
+    </p>
+  </div>
+
+  <div class="glass-card">
+    <h3>Real AI Integration</h3>
+    <p>
+      Connect OpenAI API or Gemini API for intelligent syllabus answers.
+    </p>
+  </div>
+
+  <div class="glass-card">
+    <h3>Online Exams</h3>
+    <p>
+      Students can attend MCQ and essay exams online with marks.
+    </p>
+  </div>
+
+  <div class="glass-card">
+    <h3>PDF Viewer</h3>
+    <p>
+      View papers directly inside the website without downloading.
+    </p>
+  </div>
+
+</div>
+
+  </section>  <footer>
+    © 2026 OMA Knowledge Bank | Designed for A/L Commerce Students | ශ්‍රී ලංකාවේ Commerce Students සඳහා
+  </footer>  <script>
+
+    const uploadInput = document.getElementById('paperUpload');
+    const adminPassword = document.getElementById('adminPassword');
+
+    adminPassword.addEventListener('input', function() {
+
+      if(adminPassword.value === 'OMA123') {
+        uploadInput.disabled = false;
+        uploadInput.style.opacity = '1';
+      } else {
+        uploadInput.disabled = true;
+        uploadInput.style.opacity = '0.5';
+      }
+    });
+    const paperList = document.getElementById('paperList');
+
+    uploadInput.addEventListener('change', function() {
+
+      const file = this.files[0];
+
+      if(file) {
+
+        const newPaper = document.createElement('div');
+        newPaper.classList.add('paper-item');
+
+        newPaper.innerHTML = `
+          <div>
+            <h3>${file.name}</h3>
+            <p>${(file.size / 1024).toFixed(2)} KB</p>
+          </div>
+
+          <button class="download-btn">Download</button>
+        `;
+
+        paperList.appendChild(newPaper);
+
+        alert('Past paper uploaded successfully! / Past paper upload කරලා අවසන්');
+      }
+    });
+
+
+    function generateAnswer() {
+
+      const question = document.getElementById('questionInput').value;
+      const answerBox = document.getElementById('answerBox');
+
+      if(question.trim() === '') {
+        answerBox.innerHTML = 'Please enter a commerce question. / කරුණාකර commerce question එකක් enter කරන්න.';
+        return;
+      }
+
+      let answer = '';
+
+      if(question.toLowerCase().includes('double entry')) {
+
+        answer = `
+          <strong>Double Entry Concept:</strong><br><br>
+          Every business transaction affects two accounts.
+          One account is debited and another account is credited.<br><br>
+          සෑම ගනුදෙනුවක්ම accounts දෙකකට බලපානවා.
+          එක account එකක් debit වෙනකොට අනෙක් account එක credit වෙනවා.
+        `;
+
+      } else if(question.toLowerCase().includes('marketing')) {
+
+        answer = `
+          <strong>Marketing:</strong><br><br>
+          Marketing is the process of identifying customer needs
+          and satisfying them profitably through products and services.
+        `;
+
+      } else if(question.toLowerCase().includes('economics')) {
+
+        answer = `
+          <strong>Economics:</strong><br><br>
+          Economics studies how limited resources are used
+          to satisfy unlimited human wants.
+        `;
+
+      } else {
+
+        answer = `
+          <strong>AI Commerce Bot:</strong><br><br>
+          Your question has been received.
+          Connect this website with OpenAI API or Gemini API
+          to generate real AI-powered answers based on the A/L syllabus.
+        `;
+      }
+
+      answerBox.innerHTML = answer;
+    }
+
+  
+
+    const themeToggle = document.getElementById('themeToggle');
+
+    themeToggle.addEventListener('click', () => {
+
+      if(document.body.style.background === 'white') {
+
+        document.body.style.background = 'linear-gradient(135deg, #050816, #0f172a, #111827)';
+        document.body.style.color = 'white';
+
+      } else {
+
+        document.body.style.background = '#ffffff';
+        document.body.style.color = '#111827';
+      }
+    });
+
+
+    // Firebase Configuration Placeholder
+    // Replace with your Firebase project config
+
+    const firebaseConfig = {
+      apiKey: 'YOUR_API_KEY',
+      authDomain: 'YOUR_DOMAIN',
+      projectId: 'YOUR_PROJECT_ID',
+      storageBucket: 'YOUR_BUCKET',
+      messagingSenderId: 'YOUR_SENDER_ID',
+      appId: 'YOUR_APP_ID'
+    };
+
+
+    // OpenAI / Gemini API Placeholder
+
+    async function askRealAI(question) {
+
+      console.log('Connect OpenAI or Gemini API here');
+    }
+
+  </script></body>
+</html>
